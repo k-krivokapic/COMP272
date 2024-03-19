@@ -1,0 +1,23 @@
+/* Complete the balanceHeight() method. This method should return -1 if the binary tree is unbalanced using the criteria of AVL Tree 
+unbalancing, else returns the maximum number of levels of the tree (number of levels counting root). */
+
+public int balanceHeight() {
+    return balanceHeightHelper(root);
+  }
+
+  private int balanceHeightHelper(Node node) {
+    if (node == null) {
+      return 0;
+    }
+    // use recursion to traverse both sides of the tree
+    int left = balanceHeightHelper(node.left);
+    int right = balanceHeightHelper(node.right);
+    // finds the absolute difference
+    int difference = Math.abs(left - right);
+    // if the difference is > 1, the tree is imbalanced
+    if (difference > 1) {
+      return -1;
+    }
+    // returns max levels of tree
+    return Math.max(left, right) + 1;
+  }
