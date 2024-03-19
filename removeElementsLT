@@ -1,0 +1,13 @@
+/* Complete the removeElementsLT method to remove all elements from the list less than the element passed into the method as an argument. Example: running 
+removeElementsLT(8) would remove elements less than 8 from the list. */
+
+public void removeElementsLT(int ltValue) {
+    // initialize pointer
+    Node currNode = this.head;
+    // traverse the linked list
+    while (currNode != null && currNode.data < ltValue) {
+      // delete nodes that are less than ltValue
+      this.head = currNode.next;
+      currNode = this.head;
+    }
+  }
