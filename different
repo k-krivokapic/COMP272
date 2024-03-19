@@ -1,0 +1,11 @@
+/* Complete the different() method. This method should return a set containing elements that are 
+different between the two input Tree Sets. */
+
+public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
+    Set<Integer> tmp = new TreeSet<>(setA);
+    // second temp TreeSet to store setB values
+    Set<Integer> tmpB = new TreeSet<>(setB);
+    // remove the values that are both in setA and setB
+    tmp.removeAll(tmpB);
+    return tmp;
+  }
