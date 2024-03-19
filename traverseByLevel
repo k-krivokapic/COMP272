@@ -1,0 +1,26 @@
+/* Complete the traverseByLevel() method. This method should return a string of integers 
+representing the traversal of the tree in level-order (or breadth-first order). */
+
+public String traverseByLevel() {
+    String result = "";
+    // checks if the tree is empty
+    if (root == null) {
+      return result;
+    }
+    // create queue to store nodes from tree
+    Queue<Node> queue = new LinkedList<>();
+    // start at the root
+    queue.add(root);
+    // traverse until queue is empty
+    while (!queue.isEmpty()) {
+      Node node = queue.remove();
+      // add the current node's value to the list
+      result += node.data + " ";
+      // add the current node's children to the queue
+      for (Node child : node.getChildren()) {
+        queue.add(child);
+      }
+    }
+    // Return the result after trimming any trailing spaces
+    return result.trim();
+  }
