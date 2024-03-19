@@ -1,0 +1,13 @@
+/* Complete the findMin() method. This method should return the minimum of the values in the tree */
+
+public int findMin() {
+    return findMinHelper(root);
+  }
+
+  private int findMinHelper(Node node) {
+    if (node.left == null) {
+      return node.data;
+    }
+    // use recursion to traverse the left side of the tree to find the min value
+    return findMinHelper(node.left);
+  }
