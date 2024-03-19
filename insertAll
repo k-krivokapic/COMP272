@@ -1,0 +1,44 @@
+/* Complete the insertAll() method. This method should accept an array of integers and insert each 
+of them into the tree. It should invoke a private method insert() which you need to code as well */
+
+public void insertAll(int[] data) {
+    // cycle through the array
+    for (int i = 0; i < data.length; i++) {
+      // call method to begin insertion process
+      insert(data[i]);
+    }
+  }
+
+  /**
+   * Method Insert
+   *
+   * This method inserts a new node into the binary search tree. The
+   * tree *DOES ALLOW* duplicates. Duplicates values are to the right.
+   * E.g., if inserting a value '6' and '6' already exists in the tree,
+   * the newly inserted value '6' will be to the right child [subtree]
+   * of the existing node with value '6'.
+   *
+   * Use the helper private method provided below which is called by
+   * the public method.
+   */
+
+  private void insert(int data) {
+    // take the element we are at and search for the right place to insert
+    root = insertHelper(root, data);
+  }
+
+  private Node insertHelper(Node root, int data) {
+    // if the root is null, create a new node
+    if (root == null) {
+      return new Node(data);
+    }
+    if (root.data <= data) {
+      // insert to the right
+      root.right = insertHelper(root.right, data);
+
+    } else {
+      // if the root is greater than the data, insert to the left
+      root.left = insertHelper(root.left, data);
+    }
+    return root;
+  }
