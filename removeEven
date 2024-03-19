@@ -1,0 +1,19 @@
+/* Complete the removeEven() method. This method should remove entries from a given TreeMap 
+where the key is an even number. 
+This method should remove the elements from the TreeMap passed as a parameter. Recommend
+Using a TreeMap iterator object and simply loop through the map removing even number keys */
+
+public static void removeEven(Map<Integer, String> treeMap) {
+    // create a TreeMap iterator object
+    Iterator<Map.Entry<Integer, String>> traverse = treeMap.entrySet().iterator();
+    // traverse the map
+    while (traverse.hasNext()) {
+      // get the next entry
+      Map.Entry<Integer, String> entry = traverse.next();
+      // check if the key is even
+      if (entry.getKey() % 2 == 0) {
+        // if it is, remove it
+        traverse.remove();
+      }
+    }
+  }
