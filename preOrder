@@ -1,0 +1,15 @@
+/* Complete the preOrder() method. This method should return the pre-order traversal (as a String) of the values in the tree. */
+
+public String preOrder() {
+    return preOrderHelper(root);
+  }
+
+  private String preOrderHelper(Node node) {
+    if (node == null)
+      return "";
+    // use recursion to traverse the tree and store nodes in a string
+    String current = node.data + " ";
+    String left = preOrderHelper(node.left);
+    String right = preOrderHelper(node.right);
+    return current + left + right;
+  }
