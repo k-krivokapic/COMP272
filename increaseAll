@@ -1,0 +1,28 @@
+/* Complete the increaseAll() method.
+The purpose of this method is to traverse each node in the tree and increase the value of the 
+node’s data by the integer parameter passed to the method. */
+
+/**
+   * Method increaseAll
+   *
+   * This method inserts the value of ever node in the tree by
+   * a supplied value.
+   *
+   * Use the helper private method provided below which is called by
+   * the public method.
+   */
+
+  public int increaseAll(int value) {
+    // calls helper method
+    return increaseAllHelper(root, value);
+  }
+
+  private int increaseAllHelper(Node node, int value) {
+    if (node == null) {
+      return 0;
+    }
+    // increase the node by the given value
+    node.data += value;
+    // increases the value of all nodes
+    return value + increaseAllHelper(node.left, value) + increaseAllHelper(node.right, value);
+  }
