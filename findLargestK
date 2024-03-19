@@ -1,0 +1,18 @@
+/* Complete the findLargestK method which takes a stack and an integer K as inputs and then returns the largest index of K in the stack. Example: Given the stack 
+[5,3,1,4,1] and K=1, the method will return 4 */
+
+public static int findLargestK(Stack<Integer> stack, int k) {
+    // initialize value (returns -1 if k is not found)
+    int largest = -1;
+    // traverse stack until empty
+    for (int i = stack.size() - 1; i >= 0; i--) {
+      // access value at current element
+      int top = stack.pop();
+      // check if it's the value we're looking for
+      if (top == k) {
+        // use math.max to make sure it's at the largest element
+        largest = Math.max(largest, i);
+      }
+    }
+    return largest;
+  }
