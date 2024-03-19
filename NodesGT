@@ -1,0 +1,22 @@
+/* Complete the NodesGT() method. This method has one parameter: integer val.
+The method should return the number of nodes greater than the integer passed as val. If NodesGT(3) was called with the tree pictured above, 
+it should return 3 because the nodes 7 and 9, and 14 are the only nodes greater than 3. */
+
+public int NodesGT(int val) {
+    return NodesGTHelper(root, val);
+  }
+
+  private int NodesGTHelper(Node node, int val) {
+    if (node == null) {
+      return 0;
+    }
+    // keep a counter of how many nodes are greater than val
+    int count = 0;
+    if (node.data > val) {
+      count++;
+    }
+    // use recursion to traverse both sides of the tree
+    count += NodesGTHelper(node.left, val);
+    count += NodesGTHelper(node.right, val);
+    return count;
+  }
