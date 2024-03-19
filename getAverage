@@ -1,0 +1,23 @@
+/* Complete the getAverage() method. This method should accept two arguments, HashMap and 
+arr, where arr is an array of integers. The method then returns a computed average of the values 
+of each key found in both the array and HashMap. For example, the keys 1, 2 from the array are 
+present in the HashMap, so the average is calculated as (10+20)/2 = 15. The keys ‘7’ and ‘8’ are 
+not present in the HashMap, so their corresponding values are not included in the average 
+calculation. */
+
+public double getAverage(HashMap<Integer, Integer> map,
+      int[] array) {
+    // initialize variables
+    double sum = 0.0;
+    double total = 0.0;
+    // travsere through the array
+    for (int i = 0; i < array.length; i++) {
+      // if the array value is in the map, add it to the sum and increase the total by 1
+      if (map.containsKey(array[i])) {
+        sum += map.get(array[i]);
+        total++;
+      }
+    }
+    // calulate the average
+    return sum / total;
+  }
