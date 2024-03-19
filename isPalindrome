@@ -1,0 +1,27 @@
+/* Complete the isPalindrome method to check if the input string by a user is a palindrome (a word or sentence that is spelled the same in reverse as it is spelled 
+straightforward). This method should work irrespective of spaces and casing. Example: the method should return true for “Race Car” and “racecar”. */
+
+public static boolean isPalindrome(String input) {
+    // clean the string
+    input = input.toLowerCase().replaceAll("[0-9]+", "");
+    input = input.replaceAll(" ", "");
+    // initialize flag to check ifor palindrome
+    boolean palindrome = false;
+    // initialize string to hold the reversed input
+    String reverse = "";
+    // initiaize stack
+    Stack<Character> stack = new Stack<>();
+    // add each character from input to the stack
+    for (int i = 0; i < input.length(); i++) {
+      stack.push(input.charAt(i));
+    }
+    // add each character from the stack to the reverse string
+    for (int j = 0; j < input.length(); j++) {
+      reverse = reverse + stack.pop();
+    }
+    // if the input and reverse are the same, it is true
+    if (reverse.equals(input)) {
+      palindrome = true;
+    }
+    return palindrome;
+  }
