@@ -1,0 +1,29 @@
+/* Complete the method replace(K,V,V). */
+
+/**
+   * method: boolean replace(K, V, V)
+   *
+   * Replaces the entry for the specified key only if currently
+   * mapped to the specified value.
+   *
+   * @param key    - Key for the <k, v> pair to replace its
+   *               value
+   * @param oldVal - Replace only if current <k,v>'s value
+   *               is same as oldVal
+   * @param newVal - the new value to use.
+   *
+   * @return V - returns the old value for the <k,v> pair,
+   *         else null if not found.
+   */
+
+  public boolean replace(K key, V oldVal, V newVal) {
+    boolean replaced = false;
+    // get the current value at the key
+    V currentVal = get(key);
+    // if the current value isn't null and the same as the oldVal, it gets replaced
+    if (currentVal != null && currentVal.equals(oldVal)) {
+      replace(key, newVal);
+      replaced = true;
+    }
+    return replaced;
+  }
