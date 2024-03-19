@@ -1,0 +1,36 @@
+/* Complete the average() method. This method should return the average of all the values in the tree. This function should implement the 
+mathematical average by calculating the sum of the values of all nodes and dividing it by the number of nodes in the tree. This is referred to 
+as the arithmetic mean. */
+
+  // used to keep track of the amount of nodes for calculating the average starting at the first one
+  private double count = 1.0;
+
+  public double average() {
+    // calculates the average
+    return averageHelper(root) / this.count;
+  }
+
+  private double averageHelper(Node node) {
+    if (node == null) {
+      return 0.0 / 0.0;
+    }
+    // use recursion to traverse both sides of the tree
+    double sum = node.data;
+    double left = averageHelper(node.left);
+    double right = averageHelper(node.right);
+    // if there is a node, add its value to the sum and increase the counter for
+    // total nodes
+    if (node.left != null) {
+      this.count++;
+      sum += left;
+    }
+    if (node.right != null) {
+      this.count++;
+      sum += right;
+    }
+    // returns 0 if the sum is negative
+    if (sum / this.count < 0.0) {
+      return 0.0;
+    }
+    return sum;
+  }
