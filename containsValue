@@ -1,0 +1,25 @@
+/**
+   * Method: boolean contains(V)
+   *
+   * Returns true if this map maps one or more keys to the
+   * specified value
+   *
+   * @param val: Value to search for in hashmap to determine
+   *             if it is contained there.
+   *
+   * @return: true if found, else false.
+   */
+
+  public boolean containsValue(V val) {
+    boolean contains = false;
+    // traverse the hashmap
+    for (int i = 0; i < numBuckets; i++) {
+      // get the current value
+      HashNode<K, V> currentV = bucket.get(i);
+      // check if it matches the value we are searching for
+      if (currentV != null && currentV.value.equals(val)) {
+        contains = true;
+      }
+    }
+    return contains;
+  }
