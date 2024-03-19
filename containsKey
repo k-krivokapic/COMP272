@@ -1,0 +1,25 @@
+/**
+   * Method: boolean containsKey(K)
+   *
+   * Returns true if this map contains a mapping for the
+   * specified key.
+   *
+   * @param key: The key to search for to determine of hash
+   *             map contains it
+   *
+   * @return: true if found, else false.
+   */
+
+  public boolean containsKey(K key) {
+    boolean contains = false;
+    // traverse the hashmap
+    for (int i = 0; i < numBuckets; i++) {
+      // get the current key
+      HashNode<K, V> currentK = bucket.get(i);
+      // check if the current key is the key we are looking for
+      if (currentK != null && currentK.key.equals(key)) {
+        contains = true;
+      }
+    }
+    return contains;
+  }
