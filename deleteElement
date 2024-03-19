@@ -1,0 +1,59 @@
+/* Complete the deleteElement() method. This method has two parameters: integer value, Node node.
+The purpose of the method is to delete an element within the tree. 
+     * NOTE, that you should use the existing coded private methods
+     * in this file, which include minValueNode, getMaxHeight,
+     * getHeight, getBalanceFactor, LLRotation RRRotation, LRRotation,
+     * RLRotation. To understand what each of these methods do, look at
+     * the comment prologues and code for each.
+     */
+
+private Node deleteElement(int value, Node node) {
+    if (node == null) {
+      return null;
+    }
+    // if the current node is less than the value, go left
+    if (value < node.value) {
+      node.leftChild = deleteElement(value, node.leftChild);
+      // if the current node is greater than the value, go right
+    } else if (value > node.value) {
+      node.rightChild = deleteElement(value, node.rightChild);
+    } else {
+      // value is found, check for amount of children
+      // no children found, delete node
+      if (node.leftChild == null && node.rightChild == null) {
+        return null;
+        // has 1 right child, replace node with it
+      } else if (node.leftChild == null) {
+        return node.rightChild;
+        // has 1 left child, replace node with it
+      } else if (node.rightChild == null) {
+        return node.leftChild;
+      } else {
+        // node has two children, find the successor
+        Node min = minValueNode(node.rightChild);
+        // copy the successor's value to the node
+        node.value = min.value;
+        node.rightChild = deleteElement(min.value, node.rightChild);
+      }
+    }
+    // recalculate the balance factor and height
+    if (Math.abs(getBalanceFactor(node)) != 1) {
+      if (getBalanceFactor(node) > 1) {
+        // check if it's the left or right child that's out of balance
+        if (getBalanceFactor(node.leftChild) > 0) {
+          return LLRotation(node);
+        } else {
+          return LRRotation(node);
+        }
+      }
+      if (getBalanceFactor(node) < -1) {
+        // check if it's the left or right child that's out of balance
+        if (getBalanceFactor(node.rightChild) < 0) {
+          return RRRotation(node);
+        } else {
+          return RLRotation(node);
+        }
+      }
+    }
+    return node;
+}
